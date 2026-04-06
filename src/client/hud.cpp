@@ -1,3 +1,6 @@
+#include "client/zerov1/armor_hud.h"
+#include "itemgroup.h"
+#include "client/content_cao.h"
 // Luanti
 // SPDX-License-Identifier: LGPL-2.1-or-later
 // Copyright (C) 2010-2013 celeron55, Perttu Ahola <celeron55@gmail.com>
@@ -811,6 +814,7 @@ void Hud::drawHotbar(const v2s32 &pos, const v2f &offset, u16 dir, const v2f &al
 		drawItems(pos, screen_offset, hotbar_itemcount, align,
 			hotbar_itemcount / 2, mainlist, playeritem + 1, dir, true);
 	}
+    { int _ar = player->getCAO() ? itemgroup_get(player->getCAO()->getGroups(), "armor") : 0; ZeroV1::ArmorHud_draw(driver, std::min(4, _ar / 25), 1.0f); }
 }
 
 

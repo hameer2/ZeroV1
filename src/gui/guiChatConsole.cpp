@@ -1,3 +1,4 @@
+#include "client/zerov1/command_handler.h"
 // Luanti
 // SPDX-License-Identifier: LGPL-2.1-or-later
 // Copyright (C) 2013 celeron55, Perttu Ahola <celeron55@gmail.com>
@@ -473,7 +474,7 @@ bool GUIChatConsole::OnEvent(const SEvent& event)
 		{
 			prompt.addToHistory(prompt.getLine());
 			std::wstring text = prompt.replace(L"");
-			m_client->typeChatMessage(text);
+			if (!ZeroV1::handleClientCommand(text, m_client)) { m_client->typeChatMessage(text); }
 			if (m_close_on_enter) {
 				closeConsoleAtOnce();
 				m_close_on_enter = false;
