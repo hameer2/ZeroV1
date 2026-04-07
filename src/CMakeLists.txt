@@ -537,6 +537,9 @@ if (BUILD_CLIENT)
 endif(BUILD_CLIENT)
 
 list(APPEND client_SRCS
+    client/zerov1/zerov1.cpp
+    client/zerov1/command_handler.cpp
+  client/zerov1/armor_hud.cpp
 	${common_SRCS}
 	${gui_SRCS}
 	${client_network_SRCS}
