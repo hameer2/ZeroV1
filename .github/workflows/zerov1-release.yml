@@ -34,14 +34,16 @@ jobs:
             -DRUN_IN_PLACE=1 .
 
       - name: Build
-        shell: pwsh
-        run: |
-          cmake --build . --config Release 2>&1 | Tee-Object -FilePath build_log.txt
-          exit $LASTEXITCODE
+        run: cmake --build . --config Release
 
-      - name: Upload build log
-        if: always()
+      - name: Package
+        run: |
+          cpack -G ZIP -B "$env:GITHUB_WORKSPACE\Package"
+          rm -r "$env:GITHUB_WORKSPACE\Package\_CPack_Packages"
+
+      - name: Upload game
         uses: actions/upload-artifact@v4
         with:
-          name: build-log
-          path: build_log.txt
+          name: ZeroV1-windows-x64
+          path: .\Package\
+          if-no-files-found: error
