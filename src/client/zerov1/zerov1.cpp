@@ -5,5 +5,4 @@ namespace ZeroV1 {
     bool hitbox_debug_visible = false;
     std::string chat_color_hex = "";
     std::string chat_color_hex = "";
-    bool fov_scroll_mode = false;
 }

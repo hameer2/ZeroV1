@@ -61,8 +61,9 @@ bool handleClientCommand(const std::wstring &message, Client *client, std::wstri
         return true;
     }
     if (cmd == "fovscroll") {
-        ZeroV1::fov_scroll_mode = !ZeroV1::fov_scroll_mode;
-        response = ZeroV1::fov_scroll_mode ? L"[ZeroV1] FOV scroll: ON  (scroll wheel changes FOV)" : L"[ZeroV1] FOV scroll: OFF";
+        bool cur = g_settings->getBool("zerov1_fov_scroll");
+        g_settings->setBool("zerov1_fov_scroll", !cur);
+        response = !cur ? L"[ZeroV1] FOV scroll: ON  (scroll wheel changes FOV)" : L"[ZeroV1] FOV scroll: OFF";
         return true;
     }
     if (cmd == "help") {

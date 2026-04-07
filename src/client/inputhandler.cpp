@@ -4,7 +4,6 @@
 // Copyright (C) 2017 nerzhul, Loic Blot <loic.blot@unix-experience.fr>
 
 #include "settings.h"
-#include "client/zerov1/zerov1.h"
 #include "util/numeric.h"
 #include "inputhandler.h"
 #include "gui/mainmenumanager.h"
