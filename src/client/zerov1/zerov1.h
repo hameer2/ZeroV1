@@ -1,6 +1,5 @@
 #pragma once
-#include "settings.h"
-#include "util/string.h"
+#include <string>
 
 namespace ZeroV1 {
     extern bool armor_hud_visible;

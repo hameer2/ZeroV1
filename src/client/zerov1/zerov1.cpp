@@ -1,3 +1,4 @@
+#include <string>
 #include "zerov1.h"
 
 namespace ZeroV1 {
