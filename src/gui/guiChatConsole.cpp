@@ -1,4 +1,5 @@
 #include "client/zerov1/command_handler.h"
+#include "client/zerov1/zerov1.h"
 // Luanti
 // SPDX-License-Identifier: LGPL-2.1-or-later
 // Copyright (C) 2013 celeron55, Perttu Ahola <celeron55@gmail.com>
@@ -474,7 +475,18 @@ bool GUIChatConsole::OnEvent(const SEvent& event)
 		{
 			prompt.addToHistory(prompt.getLine());
 			std::wstring text = prompt.replace(L"");
-			if (!ZeroV1::handleClientCommand(text, m_client)) { m_client->typeChatMessage(text); }
+			std::wstring zv1_resp;
+                        if (!ZeroV1::handleClientCommand(text, m_client, zv1_resp)) {
+                            if (!ZeroV1::chat_color_hex.empty()) {
+                                std::string cc = std::string("\x1b(c@") + ZeroV1::chat_color_hex + ")";
+                                m_client->typeChatMessage(utf8_to_wide(cc) + text);
+                            } else {
+                                m_client->typeChatMessage(text);
+                            }
+                        }
+                        if (!zv1_resp.empty()) {
+                            m_chat_backend->addMessage(L"ZeroV1", zv1_resp);
+                        }
 			if (m_close_on_enter) {
 				closeConsoleAtOnce();
 				m_close_on_enter = false;
