@@ -46,20 +46,7 @@ bool handleClientCommand(const std::wstring &message, Client *client, std::wstri
         response = ZeroV1::hitbox_debug_visible ? L"[ZeroV1] Hitbox debug: ON" : L"[ZeroV1] Hitbox debug: OFF";
         return true;
     }
-    if (cmd == "chatcolor") {
-        if (args.empty()) { response = L"[ZeroV1] Usage: .chatcolor <red|green|blue|yellow|white|purple|orange|none>"; return true; }
-        std::string color = args[0];
-        if (color == "none" || color == "off") { ZeroV1::chat_color_hex = ""; response = L"[ZeroV1] Chat color cleared."; }
-        else if (color == "red")    { ZeroV1::chat_color_hex = "#FF4444"; response = L"[ZeroV1] Chat color: red"; }
-        else if (color == "green")  { ZeroV1::chat_color_hex = "#44FF44"; response = L"[ZeroV1] Chat color: green"; }
-        else if (color == "blue")   { ZeroV1::chat_color_hex = "#4488FF"; response = L"[ZeroV1] Chat color: blue"; }
-        else if (color == "yellow") { ZeroV1::chat_color_hex = "#FFFF44"; response = L"[ZeroV1] Chat color: yellow"; }
-        else if (color == "white")  { ZeroV1::chat_color_hex = "#FFFFFF"; response = L"[ZeroV1] Chat color: white"; }
-        else if (color == "purple") { ZeroV1::chat_color_hex = "#CC44FF"; response = L"[ZeroV1] Chat color: purple"; }
-        else if (color == "orange") { ZeroV1::chat_color_hex = "#FF8844"; response = L"[ZeroV1] Chat color: orange"; }
-        else { response = L"[ZeroV1] Colors: red green blue yellow white purple orange none"; }
-        return true;
-    }
+
     if (cmd == "fovscroll") {
         bool cur = g_settings->getBool("zerov1_fov_scroll");
         g_settings->setBool("zerov1_fov_scroll", !cur);
@@ -67,7 +54,7 @@ bool handleClientCommand(const std::wstring &message, Client *client, std::wstri
         return true;
     }
     if (cmd == "help") {
-        response = L"[ZeroV1] Commands: .fov <val>  .armor  .hitbox  .chatcolor <color>  .fovscroll  .help";
+        response = L"[ZeroV1] Commands: .fov <val>  .armor  .hitbox  .fovscroll  .help";
         return true;
     }
 
