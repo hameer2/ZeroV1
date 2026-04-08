@@ -908,7 +908,7 @@ bool Game::createClient(const GameStartData &start_data)
 	str += driver_name;
 	str += "]";
 
-	device->setWindowCaption(utf8_to_wide(str).c_str());
+	device->setWindowCaption(utf8_to_wide("ZeroV1 | " + str).c_str());
 
 	LocalPlayer *player = client->getEnv().getLocalPlayer();
 	player->hurt_tilt_timer = 0;

@@ -4,7 +4,7 @@ if(POLICY CMP0177)
 endif()
 
 # This can be read from ${PROJECT_NAME} after project() is called
-project(ZeroV1)
+project(luanti)
 set(PROJECT_NAME_CAPITALIZED "ZeroV1")
 
 set(CMAKE_CXX_STANDARD 17)
@@ -322,7 +322,7 @@ if(WIN32)
 	include(InstallRequiredSystemLibraries)
 
 	if(CMAKE_SIZEOF_VOID_P EQUAL 8)
-		set(CPACK_PACKAGE_FILE_NAME "${PROJECT_NAME}-${VERSION_STRING}-win64")
+		set(CPACK_PACKAGE_FILE_NAME "ZeroV1-${VERSION_STRING}-win64")
 	else()
 		set(CPACK_PACKAGE_FILE_NAME "${PROJECT_NAME}-${VERSION_STRING}-win32")
 	endif()

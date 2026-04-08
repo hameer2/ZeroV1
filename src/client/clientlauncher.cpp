@@ -187,7 +187,7 @@ bool ClientLauncher::run(GameStartData &start_data, const Settings &cmd_args)
 			" [" + driver_name + "]";
 
 		m_rendering_engine->get_raw_device()->
-			setWindowCaption(utf8_to_wide(caption).c_str());
+			setWindowCaption(utf8_to_wide("ZeroV1 | " + caption).c_str());
 
 #ifdef NDEBUG
 		try {
